@@ -1,0 +1,259 @@
+{% extends 'base.html' %} {% block content %}
+
+<h1
+  style="
+    color: rgb(29, 29, 31);
+    direction: ltr;
+    display: block;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 48px;
+    font-style: normal;
+    font-synthesis-small-caps: none;
+    font-synthesis-style: none;
+    font-synthesis-weight: none;
+    font-weight: 600;
+    height: 104px;
+    letter-spacing: -0.144px;
+    line-height: 52.007679px;
+    margin-block-end: 0px;
+    margin-block-start: 7.2px;
+    margin-bottom: 0px;
+    margin-inline-end: 0px;
+    margin-inline-start: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 5% !important;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
+    quotes: auto;
+    text-align: center;
+  "
+>
+  Componentes
+</h1>
+&nbsp;
+<a
+  href="create/"
+  class="btn btn-primary"
+  style="
+    background: repeat rgb(0, 113, 227);
+    border: 1px solid rgba(0, 0, 0, 0);
+    border-radius: 980px;
+    box-sizing: content-box;
+    color: rgb(255, 255, 255);
+    margin-left: 43% !important;
+    margin-right: 44% !important;
+  "
+>
+  <button type="button" class="btn" style="color: rgb(255, 255, 255)">
+    Crear Componente
+  </button>
+</a>
+
+<!-- Texto después del botón -->
+<p
+  style="
+    color: rgb(29, 29, 31);
+    direction: ltr;
+    display: block;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 28px;
+    font-style: normal;
+    font-synthesis-small-caps: none;
+    font-synthesis-style: none;
+    font-synthesis-weight: none;
+    font-weight: 400;
+    letter-spacing: 0.196px;
+    line-height: 36.003361px;
+    margin-block: 18.200001px 24px;
+    margin-inline: 0px;
+    padding: 0px;
+    quotes: auto;
+    text-align: center;
+    -webkit-font-smoothing: antialiased;
+    margin: 100px 10% !important;
+  "
+>
+  En nuestra empresa de ensamblaje, la convergencia eficiente de componentes
+  electrónicos no solo da vida a dispositivos, sino que también impulsa la
+  accesibilidad global a la tecnología, generando empleo y fomentando el
+  desarrollo económico local.
+</p>
+
+<style>
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+
+  th,
+  td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+
+  th {
+    background-color: #f2f2f2;
+  }
+
+  .details {
+    display: none;
+  }
+</style>
+
+<input
+  style="
+    appearance: none;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgb(134, 134, 139);
+    border-radius: 8px;
+    box-sizing: border-box;
+    color: rgb(29, 29, 31);
+    cursor: auto;
+    direction: ltr;
+    display: inline-block;
+    flex-basis: 59%;
+    font-family: Helvetica, Arial, sans-serif;
+    font-feature-settings: normal;
+    font-kerning: auto;
+    font-optical-sizing: auto;
+    font-size: 18px;
+    font-size-adjust: none;
+    font-stretch: 100%;
+    font-style: normal;
+    font-synthesis-small-caps: none;
+    font-synthesis-style: none;
+    font-synthesis-weight: none;
+    font-variant-alternates: normal;
+    font-variant-caps: normal;
+    font-variant-east-asian: normal;
+    font-variant-ligatures: normal;
+    font-variant-numeric: normal;
+    font-variant-position: normal;
+    font-variation-settings: normal;
+    font-weight: 400;
+    height: 56px;
+    letter-spacing: -0.396px;
+    line-height: 22.236479px;
+    margin-top: 0px;
+    max-width: 59%;
+    padding: 0px 43px;
+    quotes: auto;
+    text-align: left;
+    text-indent: 0px;
+    text-overflow: ellipsis;
+    text-shadow: none;
+    text-transform: none;
+    width: 578.1875px;
+    word-spacing: 0px;
+    writing-mode: horizontal-tb;
+    -webkit-font-smoothing: antialiased;
+    -webkit-rtl-ordering: logical;
+    -webkit-user-select: text;
+    margin-bottom: 2% !important;
+    margin-left: 27% !important;
+    margin-right: 2% !important;
+  "
+  type="text"
+  id="searchInput"
+  onkeyup="searchTable()"
+  placeholder="Buscar por modelo..."
+/>
+
+<select id="priceFilter" onchange="filterByPrice()">
+  <option value="">Filtrar por precio</option>
+  <option value="greater">Mayor precio</option>
+  <option value="lesser">Menor precio</option>
+</select>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Descripción</th>
+      <th>Producto</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for componente in componentes %}
+    <tr>
+      <td>{{ componente.Nombre }}</td>
+      <td>{{ componente.Descripcion }}</td>
+      <td>{{ componente.Producto }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<script>
+  function toggleDetails(componenteId) {
+    var detailsDiv = document.getElementById('details_' + componenteId);
+    detailsDiv.style.display =
+      detailsDiv.style.display === 'none' ? 'block' : 'none';
+  }
+
+  function searchTable() {
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById('searchInput');
+    filter = input.value.toUpperCase();
+    table = document.querySelector('table');
+    tr = table.getElementsByTagName('tr');
+
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName('td')[0];
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = '';
+        } else {
+          tr[i].style.display = 'none';
+        }
+      }
+    }
+  }
+
+  function filterByPrice() {
+    var input,
+      filter,
+      table,
+      tr,
+      td,
+      i,
+      txtValue,
+      selectedOption,
+      selectedValue;
+    input = document.getElementById('priceFilter');
+    selectedOption = input.value.toLowerCase();
+    table = document.querySelector('table');
+    tr = table.getElementsByTagName('tr');
+
+    for (i = 1; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName('td')[2];
+      if (td) {
+        txtValue = parseFloat(td.textContent || td.innerText);
+        selectedValue = parseFloat(
+          document.getElementById('searchInput').value
+        );
+
+        if (selectedOption === 'greater' && !isNaN(selectedValue)) {
+          tr[i].style.display = txtValue > selectedValue ? '' : 'none';
+        } else if (selectedOption === 'lesser' && !isNaN(selectedValue)) {
+          tr[i].style.display = txtValue < selectedValue ? '' : 'none';
+        } else if (selectedOption === '' && isNaN(selectedValue)) {
+          tr[i].style.display = '';
+        } else {
+          tr[i].style.display = 'none';
+        }
+      }
+    }
+  }
+</script>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
+
+{% endblock %}

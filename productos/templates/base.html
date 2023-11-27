@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TechnoEnsamble Solutions</title>
+
+    <!-- Enlace a Bootstrap v4.3.1 para usar clases de Bootstrap en la barra de navegación -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <!-- Barra de Navegación -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a
+        href="/"
+        style="
+          accent-color: auto;
+          background-clip: text;
+          background-image: linear-gradient(
+            90deg,
+            rgb(112, 43, 252) 0%,
+            rgb(242, 59, 255) 100%,
+            rgb(255, 112, 118) 200%,
+            rgb(29, 29, 31) 300%
+          );
+          border-collapse: separate;
+          caption-side: top;
+          caret-color: rgb(29, 29, 31);
+          clip-rule: nonzero;
+          color: rgb(29, 29, 31);
+          color-interpolation: srgb;
+          color-interpolation-filters: linearrgb;
+          color-scheme: normal;
+          cursor: auto;
+          direction: ltr;
+          display: inline;
+          empty-cells: show;
+          fill: rgb(0, 0, 0);
+          fill-opacity: 1;
+          fill-rule: nonzero;
+          font-family: Helvetica, Arial, sans-serif;
+          font-feature-settings: normal;
+          font-kerning: auto;
+          font-optical-sizing: auto;
+          font-palette: normal;
+          font-size: 48px;
+          font-size-adjust: none;
+          font-stretch: 100%;
+          font-style: normal;
+          font-synthesis-small-caps: none;
+          font-synthesis-style: none;
+          font-synthesis-weight: none;
+          font-variant-alternates: normal;
+          font-variant-caps: normal;
+          font-variant-east-asian: normal;
+          font-variant-ligatures: normal;
+          font-variant-numeric: normal;
+          font-variant-position: normal;
+          font-variation-settings: normal;
+          font-weight: 600;
+          glyph-orientation-horizontal: 0deg;
+          glyph-orientation-vertical: auto;
+          hanging-punctuation: none;
+          height: auto;
+          hyphenate-character: auto;
+          hyphens: manual;
+          image-orientation: from-image;
+          image-rendering: auto;
+          kerning: 0;
+          letter-spacing: -0.144px;
+          line-break: auto;
+          line-height: 52.007679px;
+          list-style-image: none;
+          list-style-position: outside;
+          list-style-type: disc;
+          marker-end: none;
+          marker-mid: none;
+          marker-start: none;
+          orphans: auto;
+          overflow-wrap: normal;
+          pointer-events: auto;
+          print-color-adjust: economy;
+          quotes: auto;
+          resize: none;
+          shape-rendering: auto;
+          speak-as: normal;
+          stroke: none;
+          stroke-color: rgba(0, 0, 0, 0);
+          stroke-dasharray: none;
+          stroke-dashoffset: 0px;
+          stroke-linecap: butt;
+          stroke-linejoin: miter;
+          stroke-miterlimit: 4;
+          stroke-opacity: 1;
+          stroke-width: 1px;
+          tab-size: 8;
+          text-align: left;
+          text-align-last: auto;
+          text-anchor: start;
+          text-combine-upright: none;
+          text-decoration-skip-ink: auto;
+          text-emphasis-color: rgb(29, 29, 31);
+          text-emphasis-position: over;
+          text-emphasis-style: none;
+          text-indent: 0px;
+          text-orientation: mixed;
+          text-rendering: auto;
+          text-shadow: none;
+          text-transform: none;
+          text-underline-offset: auto;
+          text-underline-position: auto;
+          visibility: visible;
+          widows: auto;
+          width: auto;
+          word-break: normal;
+          word-spacing: 0px;
+          writing-mode: horizontal-tb;
+          -webkit-background-clip: text;
+          -webkit-border-horizontal-spacing: 0px;
+          -webkit-border-vertical-spacing: 0px;
+          -webkit-box-decoration-break: clone;
+          -webkit-box-direction: normal;
+          -webkit-cursor-visibility: auto;
+          -webkit-font-smoothing: antialiased;
+          -webkit-hyphenate-limit-after: auto;
+          -webkit-hyphenate-limit-before: auto;
+          -webkit-hyphenate-limit-lines: no-limit;
+          -webkit-line-align: none;
+          -webkit-line-box-contain: block inline replaced;
+          -webkit-line-grid: none;
+          -webkit-line-snap: none;
+          -webkit-locale: en-US;
+          -webkit-nbsp-mode: normal;
+          -webkit-rtl-ordering: logical;
+          -webkit-ruby-position: before;
+          -webkit-text-combine: none;
+          -webkit-text-decorations-in-effect: none;
+          -webkit-text-fill-color: rgba(0, 0, 0, 0);
+          -webkit-text-security: none;
+          -webkit-text-stroke-color: rgb(29, 29, 31);
+          -webkit-text-stroke-width: 0px;
+          -webkit-text-zoom: normal;
+          -webkit-user-modify: read-only;
+          -webkit-user-select: text;
+        "
+        >TechnoEnsamble Solutions</a
+      >
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item {% if request.path == '/' %}active{% endif %}">
+            <a class="nav-link" href="/">Inicio</a>
+          </li>
+          <li
+            class="nav-item {% if request.path == '/productos' %}active{% endif %}"
+          >
+            <a class="nav-link" href="/productos">Productos</a>
+          </li>
+          <li
+            class="nav-item {% if request.path == '/components' %}active{% endif %}"
+          >
+            <a class="nav-link" href="/components">Componentes</a>
+          </li>
+          {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">Cerrar sesión</a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="/signup">Registro</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/signin">Inicio de sesión</a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Páginas Contenido -->
+    {% block content %} {% endblock %}
+    <!-- Scripts de Bootstrap -->
+  </body>
+</html>
